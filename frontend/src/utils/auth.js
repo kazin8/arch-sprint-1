@@ -1,4 +1,4 @@
-const BASE_URL = 'https://auth.nomoreparties.co';
+const BASE_URL = 'http://localhost:3001';
 
 const getResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
@@ -24,9 +24,15 @@ export const login = (email, password) => {
     },
     body: JSON.stringify({email, password})
   })
+  .then(response => {
+    const token = response.headers.get('Authorization')?.split(' ')[1];
+    if (token) {
+      localStorage.setItem('jwt', token);
+    }
+    return response;
+  })
   .then(getResponse)
   .then((data) => {
-    localStorage.setItem('jwt', data.token)
     return data;
   })
 };
@@ -36,7 +42,7 @@ export const checkToken = (token) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `${token}`,
     }
   })
   .then(getResponse)

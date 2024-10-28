@@ -24,7 +24,8 @@ const login = (req: Request, res: Response, next: NextFunction) => {
           httpOnly: true,
           sameSite: true,
         })
-        .send({ data: user.toJSON() });
+        .set('Authorization', `Bearer ${token}`)
+        .send(user.toJSON());
     })
     .catch(next);
 };
@@ -52,7 +53,7 @@ const createUser = (req: Request, res: Response, next: NextFunction) => {
 
 const getUsers = (req: Request, res: Response, next: NextFunction) => {
   User.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch(next);
 };
 
@@ -75,7 +76,7 @@ const updateUserData = (req: Request, res: Response, next: NextFunction) => {
   const { user: { _id }, body } = req;
   User.findByIdAndUpdate(_id, body, { new: true, runValidators: true })
     .orFail(() => new NotFoundError('Пользователь по заданному id отсутствует в базе'))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
 

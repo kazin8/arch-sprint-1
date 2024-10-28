@@ -8,7 +8,7 @@ interface JwtPayload {
 }
 
 const auth = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.cookies.jwt;
+  const token = req.headers.authorization || '';
   let payload: JwtPayload | null = null;
   try {
     payload = jwt.verify(token, JWT_SECRET) as JwtPayload;
