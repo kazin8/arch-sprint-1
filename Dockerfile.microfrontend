@@ -1,0 +1,17 @@
+# Dockerfile
+FROM node:18-slim
+
+ENV NODE_ENV development
+ENV PUBLIC_URL "/"
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npx", "webpack", "serve", "--mode", "development", "--port", "3000"]

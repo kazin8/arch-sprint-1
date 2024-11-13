@@ -1,23 +1,57 @@
 {
-  "name": "web_canonicals_ru",
-  "version": "0.1.0",
-  "private": true,
+  "name": "arch-sprint-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".src/index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "build:startw": "SET PORT=3000 && npx serve",
+    "build:start": "cd dist && PORT=3000 npx serve",
+    "start": "webpack serve --open --mode development",
+    "test": "react-scripts test",
+    "test:microfrontend": "npx jest ./index.spec.js",
+    "eject": "react-scripts eject",
+    "start:live": "webpack serve --open --mode development --live-reload --hot"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "history": "^5.0.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router": "6.24.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
-  "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts test",
-    "test:microfrontend": "npx jest ./index.spec.js",
-    "eject": "react-scripts eject"
+  "keywords": [],
+  "devDependencies": {
+    "@babel/preset-react": "^7.25.9",
+    "@module-federation/enhanced": "0.2.5",
+    "@playwright/test": "^1.45.0",
+    "@rspack/cli": "0.7.5",
+    "@rspack/core": "0.7.5",
+    "@rspack/dev-server": "0.7.5",
+    "@svgr/webpack": "^8.1.0",
+    "@types/node": "^20.14.9",
+    "babel-loader": "^9.2.1",
+    "clsx": "2.1.1",
+    "concurrently": "8.2.2",
+    "css-loader": "7.1.2",
+    "dotenv": "^16.0.2",
+    "find-up": "7.0.0",
+    "html-webpack-plugin": "5.6.0",
+    "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
+    "serve": "14.2.3",
+    "style-loader": "^3.3.0",
+    "wait-port": "^1.1.0",
+    "webpack": "5.92.1",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "^4.3.1"
   },
   "eslintConfig": {
     "extends": [
@@ -36,11 +70,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.45.0",
-    "@types/node": "^20.14.9",
-    "dotenv": "^16.0.2",
-    "wait-port": "^1.1.0"
   }
 }

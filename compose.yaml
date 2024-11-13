@@ -57,6 +57,36 @@ services:
       dockerfile: ../Dockerfile.frontend
     ports:
       - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - PUBLIC_URL=http://localhost:3000
     depends_on:
       backend:
         condition: service_healthy
+
+  auth:
+    build:
+      context: ./frontend/microfrontend/auth
+      dockerfile: ../../../Dockerfile.microfrontend
+    ports:
+      - "3002:3000"
+    environment:
+      - PORT=3002
+
+  profile:
+    build:
+      context: ./frontend/microfrontend/profile
+      dockerfile: ../../../Dockerfile.microfrontend
+    ports:
+      - "3003:3000"
+    environment:
+      - PORT=3003
+
+  card:
+    build:
+      context: ./frontend/microfrontend/card
+      dockerfile: ../../../Dockerfile.microfrontend
+    ports:
+      - "3004:3000"
+    environment:
+      - PORT=3004
