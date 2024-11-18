@@ -1,6 +1,7 @@
 import React from 'react';
-import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
+const Card = React.lazy(() => import("card/Card"));
 
 function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = React.useContext(CurrentUserContext);
@@ -21,6 +22,7 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
       <section className="places page__section">
         <ul className="places__list">
           {cards.map((card) => (
+          <React.Suspense fallback={<div>Loading...</div>}>
             <Card
               key={card._id}
               card={card}
@@ -28,6 +30,7 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
               onCardLike={onCardLike}
               onCardDelete={onCardDelete}
             />
+          </React.Suspense>
           ))}
         </ul>
       </section>

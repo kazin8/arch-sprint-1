@@ -1,0 +1,48 @@
+{
+  "name": "card",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "build:startw": "SET PORT=3004 && npx serve",
+    "build:start": "cd dist && PORT=3004 npx serve",
+    "start": "webpack serve --open --mode development",
+    "start:live": "webpack serve --open --mode development --live-reload --hot"
+  },
+  "keywords": [],
+  "author": "kazin",
+  "devDependencies": {
+    "@babel/core": "7.24.7",
+    "@babel/preset-react": "7.24.7",
+    "@module-federation/enhanced": "0.2.5",
+    "@rspack/cli": "0.7.5",
+    "@rspack/core": "0.7.5",
+    "@rspack/dev-server": "0.7.5",
+    "@svgr/webpack": "^8.1.0",
+    "@types/react-router-dom": "^5.2.0",
+    "classnames": "2.5.1",
+    "concurrently": "8.2.2",
+    "css-loader": "7.1.2",
+    "dotenv-webpack": "^8.0.1",
+    "file-loader": "6.2.0",
+    "find-up": "7.0.0",
+    "html-webpack-plugin": "5.6.0",
+    "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
+    "react-router-dom": "^5.2.0",
+    "serve": "14.2.3",
+    "style-loader": "4.0.0",
+    "url-loader": "4.1.1",
+    "webpack": "5.92.1",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "history": "^5.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "6.24.1"
+  }
+}
